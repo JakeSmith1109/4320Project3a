@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symbol Dropdown</title>
+</head>
+
+<body>
+    <h1>Stock Data Visualizer</h1>
+    <form>
+        <label for="symbol">Select a symbol:</label>
+        <select id="symbol" name="symbol">
+            {% for symbol in symbols %}
+                <option value="{{ symbol }}">{{ symbol }}</option>
+            {% endfor %}
+        </select>
+    </form>
+
+    <br>
+
+    <form>
+        <label for="chartType">Select a chart type:</label>
+        <select id="chartType" name="chartType">
+            {% for chartType in chartTypes %}
+                <option value="{{ chartType }}">{{ chartType }}</option>
+            {% endfor %}
+        </select>
+    </form>
+
+    <br>
+
+    <form>
+        <label for="timeSer">Select a time series:</label>
+        <select id="timeSer" name="timeSer">
+            {% for timeSer in timeSers %}
+                <option value="{{ timeSer }}">{{ timeSer }}</option>
+            {% endfor %}
+        </select>
+    </form>
+
+    <br>
+
+    <label for="date">Select a start date:</label>
+        <input type="date" id="date" name="date">
+
+    <br>
+    <br>
+
+    <label for="date">Select an end date:</label>
+        <input type="date" id="date" name="date">
+</body>
+</html>
