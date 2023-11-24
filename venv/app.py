@@ -10,6 +10,7 @@ app.config["DEBUG"] = True
 #flash  the secret key to secure sessions
 app.config['SECRET_KEY'] = 'your secret key'
 
+#read data from csv file
 def read_csv():
     with open('stocks.csv', 'r') as file:
         reader = csv.DictReader(file)
@@ -20,6 +21,7 @@ def read_csv():
 # use flask's app.route decorate to map the url to that function
 @app.route("/")
 def index():
+    #create info for chart type, time series, and symbols
     symbols = read_csv()
     chartTypes = ['1: Bar', '2: Line']
     timeSers = ['1: Intraday', '2: Daily', '3: Weekly', '4: Monthly']
