@@ -32,15 +32,28 @@ def index():
 @app.route('/charts/', methods=('GET', 'POST'))
 def charts():
      if request.method=='POST':
+        print("Start date "+str(request.form["sDate"]))
         symbols = read_csv()
         chartTypes = ['1: Bar', '2: Line']
         timeSers = ['1: Intraday', '2: Daily', '3: Weekly', '4: Monthly']
-        chart=StockDataVizualizer.generateGraph(request.form["symbol"],request.form["chartType"],request.form["timeSer"],request.form["sDate"],request.form["eDate"])
+        if not(request.form["symbol"] in symbols):
+            flash("Please input a Symbol")
+        elif not(request.form["chartType"] in chartTypes ):
+            flash("Please input a Chart type")
+        elif not(request.form["timeSer"] in timeSers):
+             flash("Please input a Time series")
+        elif(request.form["sDate"]==''):
+            flash("Please enter a start date")
+        elif(request.form["eDate"]==''):
+            flash("Please enter a End date")
+        else:
+            chart=StockDataVizualizer.generateGraph(request.form["symbol"],request.form["chartType"],request.form["timeSer"],request.form["sDate"],request.form["eDate"])
+            chart = chart.render_data_uri()
         
-        print(chart)
-        chart = chart.render_data_uri()
+            return render_template( 'charts.html', chart = chart,symbols=symbols, chartTypes=chartTypes, timeSers=timeSers)
+        return render_template( 'charts.html',symbols=symbols, chartTypes=chartTypes, timeSers=timeSers)
         
-        return render_template( 'charts.html', chart = chart,symbols=symbols, chartTypes=chartTypes, timeSers=timeSers)
+        
    
 
 app.run(host="0.0.0.0", port=5001)
