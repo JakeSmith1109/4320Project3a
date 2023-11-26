@@ -47,5 +47,11 @@
         <input type="submit" value="Generate Chart">
     </form>
 
+    {% if chart %}
+    <div id="chartContainer">
+        <embed type="image/svg+xml" src="{{ chart|safe }}" />
+    </div>
+    {% endif %}
+
 </body>
 </html>

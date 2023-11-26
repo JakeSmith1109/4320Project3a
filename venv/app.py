@@ -13,7 +13,7 @@ app.config['SECRET_KEY'] = 'your secret key'
 
 #read data from csv file
 def read_csv():
-    with open('4320Project3a/stocks.csv', 'r') as file:
+    with open('stocks.csv', 'r') as file:
         reader = csv.DictReader(file)
         symbols = [row['Symbol'] for row in reader]
 
@@ -31,16 +31,22 @@ def index():
     
 @app.route('/charts/', methods=('GET', 'POST'))
 def charts():
-     if request.method=='POST':
-        symbols = read_csv()
-        chartTypes = ['1: Bar', '2: Line']
-        timeSers = ['1: Intraday', '2: Daily', '3: Weekly', '4: Monthly']
-        chart=StockDataVizualizer.generateGraph(request.form["symbol"],request.form["chartType"],request.form["timeSer"],request.form["sDate"],request.form["eDate"])
-        
-        print(chart)
+    symbols = read_csv()
+    chartTypes = ['1: Bar', '2: Line']
+    timeSers = ['1: Intraday', '2: Daily', '3: Weekly', '4: Monthly']
+    
+    chart = None
+    
+    if request.method == 'POST':
+        chart = StockDataVizualizer.generateGraph(
+            request.form["symbol"],
+            request.form["chartType"],
+            request.form["timeSer"],
+            request.form["sDate"],
+            request.form["eDate"]
+        )
         chart = chart.render_data_uri()
-        
-        return render_template( 'charts.html', chart = chart)#br,symbols=symbols, chartTypes=chartTypes, timeSers=timeSers)
-   
+    
+    return render_template('index.html', symbols=symbols, chartTypes=chartTypes, timeSers=timeSers, chart=chart)
 
 app.run(host="0.0.0.0", port=5001)
