@@ -113,7 +113,7 @@ def generateGraph(stonkSymbol, chartType, timeSeries,beginDate,endDate):
             chart.add('Close', [float(values['4. close']) for _, values in filtered_data])
             chart.add('High', [float(values['2. high']) for _, values in filtered_data])
             chart.add('Low', [float(values['3. low']) for _, values in filtered_data])
-            chart.render_in_browser()
+            #chart.render_in_browser()
         # Create the chart
         if chartType == "2: Line":
             chart = pygal.Line(title='Stock Data for ' + stonkSymbol + ': ' + beginDate + ' to ' + endDate, x_label_rotation=90, show_minor_x_labels=True)
@@ -122,7 +122,7 @@ def generateGraph(stonkSymbol, chartType, timeSeries,beginDate,endDate):
             chart.add('Close', [float(values['4. close']) for _, values in filtered_data])
             chart.add('High', [float(values['2. high']) for _, values in filtered_data])
             chart.add('Low', [float(values['3. low']) for _, values in filtered_data])
-            chart.render_in_browser()
+            #chart.render_in_browser()
     elif timeSeries=="2: Daily":
         url = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol='+stonkSymbol+'&outputsize=full&apikey='+apiKey
         r = requests.get(url)
@@ -141,7 +141,7 @@ def generateGraph(stonkSymbol, chartType, timeSeries,beginDate,endDate):
             chart.add('Close', [float(values['4. close']) for _, values in filtered_data])
             chart.add('High', [float(values['2. high']) for _, values in filtered_data])
             chart.add('Low', [float(values['3. low']) for _, values in filtered_data])
-            chart.render_in_browser()
+            #chart.render_in_browser()
         # Create the chart
         if chartType == "2: Line":
             chart = pygal.Line(title='Stock Data for ' + stonkSymbol + ': ' + beginDate + ' to ' + endDate, x_label_rotation=90, show_minor_x_labels=True)
@@ -150,7 +150,7 @@ def generateGraph(stonkSymbol, chartType, timeSeries,beginDate,endDate):
             chart.add('Close', [float(values['4. close']) for _, values in filtered_data])
             chart.add('High', [float(values['2. high']) for _, values in filtered_data])
             chart.add('Low', [float(values['3. low']) for _, values in filtered_data])
-            chart.render_in_browser()
+            #chart.render_in_browser()
     elif timeSeries=="3: Weekly":
         url = 'https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol='+stonkSymbol+'&apikey='+apiKey
         r = requests.get(url)
@@ -168,7 +168,7 @@ def generateGraph(stonkSymbol, chartType, timeSeries,beginDate,endDate):
             chart.add('Close', [float(values['4. close']) for _, values in filtered_data])
             chart.add('High', [float(values['2. high']) for _, values in filtered_data])
             chart.add('Low', [float(values['3. low']) for _, values in filtered_data])
-            chart.render_in_browser()
+            #chart.render_in_browser()
         # Create the chart
         if chartType == "2: Line":
             chart = pygal.Line(title='Stock Data for ' + stonkSymbol + ': ' + beginDate + ' to ' + endDate, x_label_rotation=90, show_minor_x_labels=True)
@@ -177,7 +177,7 @@ def generateGraph(stonkSymbol, chartType, timeSeries,beginDate,endDate):
             chart.add('Close', [float(values['4. close']) for _, values in filtered_data])
             chart.add('High', [float(values['2. high']) for _, values in filtered_data])
             chart.add('Low', [float(values['3. low']) for _, values in filtered_data])
-            chart.render_in_browser()
+            #chart.render_in_browser()
     elif timeSeries=="4: Monthly":
         url = 'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol='+stonkSymbol+'&apikey='+apiKey
         r = requests.get(url)
