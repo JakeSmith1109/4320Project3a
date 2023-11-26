@@ -40,7 +40,7 @@ def charts():
         print(chart)
         chart = chart.render_data_uri()
         
-        return render_template( 'charts.html', chart = chart)#,symbols=symbols, chartTypes=chartTypes, timeSers=timeSers)
+        return render_template( 'charts.html', chart = chart)#br,symbols=symbols, chartTypes=chartTypes, timeSers=timeSers)
    
 
 app.run(host="0.0.0.0", port=5001)
