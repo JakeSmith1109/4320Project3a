@@ -46,6 +46,8 @@
         <br>
         <input type="submit" value="Generate Chart">
     </form>
-
+    <div id="chart">
+        <embed type="image/svg+xml" src= {{ chart|safe }} />
+    </div>
 </body>
 </html>
